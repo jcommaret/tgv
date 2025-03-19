@@ -10,10 +10,10 @@ import * as ReactDOM from "react-dom/client"
 import { HashRouter as Router, Routes, Route } from "react-router-dom"
 
 // Import components from the primary adapters in the hexagonal architecture
-import Root from "./infrastructure/adapters/primary/pages/Root"
-import Home from "./infrastructure/adapters/primary/pages/Home"
-import About from "./infrastructure/adapters/primary/pages/About"
-import ErrorPage from "./infrastructure/adapters/primary/pages/ErrorPage"
+import Root from "@infrastructure/adapters/primary/pages/Root"
+import Home from "@infrastructure/adapters/primary/pages/Home"
+import About from "@infrastructure/adapters/primary/pages/About"
+import ErrorPage from "@infrastructure/adapters/primary/pages/ErrorPage"
 
 // Create the root React element and render the application
 ReactDOM.createRoot(document.getElementById("root")!).render(

@@ -7,7 +7,8 @@
  */
 
 import { Link } from "react-router-dom"
-import { navData, img } from "../../../../config/alias"
+import { navData, img } from "@infrastructure/config/alias"
+import { NavLink } from "@domain/model/NavTypes"
 import "./index.scss"
 
 function Nav(): JSX.Element {
@@ -24,7 +25,7 @@ function Nav(): JSX.Element {
           
           {/* Navigation links dynamically generated from the navigation data */}
           <ul className="navigation__links">
-            {navData.links.map((link) => (
+            {navData.links.map((link: NavLink) => (
               <li key={link.text}>
                 <Link to={link.path}>{link.text}</Link>
               </li>

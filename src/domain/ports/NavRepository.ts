@@ -9,7 +9,7 @@
  * to define what it needs without depending on specific implementations.
  */
 
-import { NavData } from '../model/NavTypes';
+import { NavData } from '@domain/model/NavTypes';
 
 /**
  * Interface for accessing navigation data

@@ -7,8 +7,8 @@
  */
 
 // Import the service from application layer and repository from infrastructure layer
-import { NavService } from '../../application/services/NavService';
-import { FileNavRepository } from '../adapters/secondary/FileNavRepository';
+import { NavService } from "@application/services/NavService";
+import { FileNavRepository } from "@infrastructure/adapters/secondary/FileNavRepository";
 
 // Create repository instances
 const navRepository = new FileNavRepository();

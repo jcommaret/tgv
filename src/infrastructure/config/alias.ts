@@ -5,9 +5,9 @@
  */
 
 // Import data and assets
-import navJson from "../../data/nav.json";
-import images from "../../assets/images";
-import { NavData } from "../../domain/model/NavTypes";
+import navJson from "@/data/nav.json";
+import images from "@assets/images";
+import { NavData } from "@domain/model/NavTypes";
 
 // Export navigation data with proper typing
 export const navData = navJson as NavData;

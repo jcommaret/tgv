@@ -9,8 +9,8 @@
  * following the Dependency Inversion Principle.
  */
 
-import { NavData } from '../../domain/model/NavTypes';
-import { NavRepository } from '../../domain/ports/NavRepository';
+import { NavData } from '@domain/model/NavTypes';
+import { NavRepository } from '@domain/ports/NavRepository';
 
 /**
  * Service that handles navigation-related operations

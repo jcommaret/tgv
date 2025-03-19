@@ -9,9 +9,9 @@
  * or API repository without changing the application core.
  */
 
-import { NavData } from '../../../domain/model/NavTypes';
-import { NavRepository } from '../../../domain/ports/NavRepository';
-import navData from '../../../data/nav.json';
+import { NavData } from '@domain/model/NavTypes';
+import { NavRepository } from '@domain/ports/NavRepository';
+import navData from '@/data/nav.json';
 
 /**
  * Repository implementation that sources navigation data from a JSON file
