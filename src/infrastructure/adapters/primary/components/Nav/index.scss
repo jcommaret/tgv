@@ -1,7 +1,7 @@
-@use "../../styles/utils/_colors" as c;
-@use "../../styles/utils/_fonts" as f;
-@use "../../styles/utils/_breakpoints" as b;
-@use "../../styles/utils/_mixins" as m;
+@use "../../../../../styles/utils/_colors" as c;
+@use "../../../../../styles/utils/_fonts" as f;
+@use "../../../../../styles/utils/_breakpoints" as b;
+@use "../../../../../styles/utils/_mixins" as m;
 
 .navigation {
   position: fixed;
@@ -34,4 +34,4 @@
       color: c.$white;
     }
   }
-}
+} 

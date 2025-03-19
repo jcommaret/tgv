@@ -3,20 +3,28 @@ import react from "@vitejs/plugin-react"
 import * as path from "path"
 import { fileURLToPath } from "url"
 
+// Get the directory name from the URL
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-// https://vite.dev/config/
+/**
+ * Vite configuration
+ * - Configures React plugin
+ * - Sets the base URL for deployment
+ * - Defines path aliases for easier imports
+ */
 export default defineConfig({
   plugins: [react()],
-  base: "/tgv/",
+  base: "/tgv/", // Base path for deployment
   resolve: {
     alias: {
+      // Path aliases for cleaner imports
       "@": path.resolve(__dirname, "./src"),
-      "@components": path.resolve(__dirname, "./src/components"),
-      "@pages": path.resolve(__dirname, "./src/pages"),
-      "@assets": path.resolve(__dirname, "./src/assets"),
-      "@styles": path.resolve(__dirname, "./src/styles"),
-      "@types": path.resolve(__dirname, "./src/types"),
+      // Hexagonal architecture layers
+      "@domain": path.resolve(__dirname, "./src/domain"),           // Domain models and ports
+      "@application": path.resolve(__dirname, "./src/application"), // Use cases and services
+      "@infrastructure": path.resolve(__dirname, "./src/infrastructure"), // Adapters and configuration
+      "@assets": path.resolve(__dirname, "./src/assets"),          // Images and static assets
+      "@styles": path.resolve(__dirname, "./src/styles"),          // Global styles
     },
   },
 })

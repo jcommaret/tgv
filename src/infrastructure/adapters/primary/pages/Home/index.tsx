@@ -1,5 +1,5 @@
 import "./index.scss"
-import img from "../../assets/images"
+import { img } from "../../../../config/alias"
 
 function Home() {
   return (
@@ -11,4 +11,4 @@ function Home() {
     </div>
   )
 }
-export default Home
+export default Home 

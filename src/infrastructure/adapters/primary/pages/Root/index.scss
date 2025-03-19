@@ -1,6 +1,6 @@
-@use "../../styles/utils/reset";
-@use "../../styles/utils/_colors.scss" as c;
-@use "../../styles/utils/_fonts.scss" as f;
+@use "../../../../../styles/utils/reset";
+@use "../../../../../styles/utils/_colors.scss" as c;
+@use "../../../../../styles/utils/_fonts.scss" as f;
 
 body {
   background-color: c.$black;
@@ -30,4 +30,4 @@ a {
   &:hover {
     color: c.$purple;
   }
-}
+} 
