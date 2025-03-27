@@ -1,8 +1,19 @@
 # TGV
 
-## Project
+## Table of Contents
 
-TGV is a boilerplate for building websites with Vite.js, React, TypeScript and SCSS, deployed on GitHub Pages. It uses a hexagonal architecture (ports and adapters) for a clear separation of concerns. It also includes react-router navigation, JSON files for routes, navigation, and content, as well as a 404.html page that redirects lost pages to the homepage using hashrouter.
+- [Hexagonal Architecture](#hexagonal-architecture)
+- [Prerequisites](#prerequisites)
+- [Features](#features)
+- [To Do](#to-do)
+- [Installation](#installation)
+- [Development](#development)
+- [Deployment](#deployment)
+- [Folder Structure](#folder-structure)
+- [Using Aliases](#using-aliases)
+- [Examples](#examples)
+- [Screenshots](#screenshots)
+- [Additional Resources](#additional-resources)
 
 ## Hexagonal Architecture
 
@@ -36,7 +47,7 @@ This architecture offers several advantages:
 - [x] Navigation
 - [x] JSON files for routes, navigation, content
 
-## To do
+## To Do
 
 - [ ] Improve responsive assets
 - [ ] Add more components
@@ -44,9 +55,9 @@ This architecture offers several advantages:
 
 ## Installation
 
-- Clone the repository
-- Open a terminal in the project folder
-- Run `npm install` to install dependencies
+1. Clone the repository
+2. Open a terminal in the project folder
+3. Run `npm install` to install dependencies
 
 ## Development
 
@@ -54,13 +65,11 @@ This architecture offers several advantages:
 
 ## Deployment
 
-- In package.json, change the homepage path to your repository name
-- Open a terminal in the project folder
-- Run `npm run deploy` to deploy the project on GitHub Pages
+1. In `package.json`, change the homepage path to your repository name
+2. Open a terminal in the project folder
+3. Run `npm run deploy` to deploy the project on GitHub Pages
 
-That's it!
-
-## Folder structure
+## Folder Structure
 
 - 404.html
 - src
@@ -88,7 +97,7 @@ That's it!
       - \_mixins.scss
   - main.tsx
 
-## Using aliases
+## Using Aliases
 
 This project uses import aliases to make the code more readable:
 
@@ -99,11 +108,3 @@ import { NavData } from '../../domain/model/NavTypes';
 // You can write
 import { NavData } from '@domain/model/NavTypes';
 ```
-
-Available aliases:
-- `@domain/*` - For domain models and ports
-- `@application/*` - For services and use cases
-- `@infrastructure/*` - For adapters and configuration
-- `@/data/*` - For JSON data
-- `@assets/*` - For images and other assets
-- `@styles/*` - For global styles
