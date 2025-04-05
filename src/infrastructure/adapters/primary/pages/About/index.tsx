@@ -1,5 +1,3 @@
-import "./index.scss"
-
 function About() {
   return (
     <>
@@ -8,4 +6,4 @@ function About() {
   )
 }
 
-export default About 
+export default About;

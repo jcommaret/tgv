@@ -1,8 +1,2 @@
-@use "../../../../../styles/utils/_colors" as c;
-
-footer {
-  width: 100%;
-  margin-bottom: 10px;
-  text-align: center;
-  color: c.$white;
-} 
+// Styles spécifiques pour le composant Footer
+// Tous les styles sont maintenant gérés par Tailwind CSS 

@@ -1,18 +1,2 @@
-.home {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  &__banner {
-    text-align: center;
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-    img {
-      width: 100%;
-      max-width: 800px;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-  }
-} 
+// Styles spécifiques pour le composant Home
+// Vous pouvez ajouter des styles supplémentaires ici si nécessaire 

@@ -9,32 +9,38 @@
 import { Link } from "react-router-dom"
 import { navData, img } from "@infrastructure/config/alias"
 import { NavLink } from "@domain/model/NavTypes"
-import "./index.scss"
 
 function Nav(): JSX.Element {
   return (
-    <>
-      <header>
-        <nav className="navigation">
-          {/* Logo with link to home page */}
-          <h1 className="navigation__logo">
-            <Link to={navData.links[0].path}>
-              <img src={img.logo} alt="logo" />
-            </Link>
-          </h1>
-          
-          {/* Navigation links dynamically generated from the navigation data */}
-          <ul className="navigation__links">
-            {navData.links.map((link: NavLink) => (
-              <li key={link.text}>
-                <Link to={link.path}>{link.text}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </header>
-    </>
+    <header className="fixed top-0 w-full bg-dark shadow-md z-50">
+      <nav className="container-custom flex justify-between items-center h-16 px-4">
+        {/* Logo with link to home page */}
+        <h1 className="text-light">
+          <Link to={navData.links[0].path} className="flex items-center">
+            <img 
+              src={img.logo} 
+              alt="logo" 
+              className="h-12 w-auto"
+            />
+          </Link>
+        </h1>
+        
+        {/* Navigation links dynamically generated from the navigation data */}
+        <ul className="flex space-x-6">
+          {navData.links.map((link: NavLink) => (
+            <li key={link.text}>
+              <Link 
+                to={link.path}
+                className="text-light "
+              >
+                {link.text}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
   )
 }
 
-export default Nav 
+export default Nav

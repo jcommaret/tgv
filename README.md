@@ -23,7 +23,7 @@ This project is organized according to the principles of hexagonal architecture 
 - **Application**: Contains services and use cases
 - **Infrastructure**: Contains adapters (primary and secondary) and configuration
 
-This architecture offers several advantages:
+This architecture  several advantages:
 - Clear separation of concerns
 - Independence of business domain from technical details
 - Improved testability
@@ -41,6 +41,7 @@ This architecture offers several advantages:
 - [x] [TypeScript](https://www.typescriptlang.org/)
 - [x] [SCSS](https://sass-lang.com/)
 - [x] [React-router](https://reactrouter.com/)
+- [x] [Tailwind CSS](https://tailwindcss.com/)
 - [x] Hexagonal Architecture
 - [x] Dependency Inversion
 - [x] Path aliases for better code readability
