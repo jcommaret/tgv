@@ -14,9 +14,6 @@ vi.mock('@assets/alias', () => ({
 // Mock content.json
 vi.mock('@data/content.json', () => ({
   default: {
-    site: {
-      description: 'Déployez gratuitement vos sites sur Github pages'
-    },
     pages: {
       home: {
         title: 'Bienvenue sur TGV'
@@ -38,12 +35,6 @@ describe('Home Page', () => {
     renderHome()
     const title = screen.getByText('Bienvenue sur TGV')
     expect(title).toBeTruthy()
-  })
-
-  it('rend la description', () => {
-    renderHome()
-    const description = screen.getByText('Déployez gratuitement vos sites sur Github pages')
-    expect(description).toBeTruthy()
   })
 
   it('rend une image', () => {

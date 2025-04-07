@@ -10,18 +10,13 @@ import content from "@data/content.json"
 
 function Home() {
   return (
-    <div className="container-custom py-10" data-testid="home-container">
-      <div className="flex flex-col items-center space-y-8">
-        <h1 className="text-4xl font-bold">{content.pages.home.title}</h1>
-        <p className="text-xl">{content.site.description}</p>
-        <div className="rounded-lg overflow-hidden shadow-xl">
-          <img 
-            src={img.bannerBlack} 
-            alt="banner" 
-            className="w-full h-auto"
-          />
-        </div>
-      </div>
+    <div className="flex flex-col items-center" data-testid="home-container">
+      <h1 className="text-4xl font-bold text-light">{content.pages.home.title}</h1>
+      <img 
+        src={img.bannerBlack} 
+        alt="banner" 
+        className="w-50" 
+      />
     </div>
   )
 }

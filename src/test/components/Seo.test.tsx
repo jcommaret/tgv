@@ -6,7 +6,17 @@ import Seo from '../../components/Seo'
 // Mock Helmet pour éviter les problèmes avec document.head
 vi.mock('react-helmet-async', () => ({
   HelmetProvider: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-  Helmet: ({ children }: { children: React.ReactNode }) => <div data-testid="helmet">{children}</div>
+  Helmet: ({ children }: { children: React.ReactNode }) => {
+    // Filtrer les éléments html et meta qui causent des problèmes de nesting
+    const sanitizedChildren = React.Children.map(children, child => {
+      if (React.isValidElement(child) && 
+          (child.type === 'html' || child.type === 'meta' || child.type === 'title' || child.type === 'link')) {
+        return null;
+      }
+      return child;
+    });
+    return <div data-testid="helmet">{sanitizedChildren}</div>;
+  }
 }))
 
 // Mock content.json avec tous les champs requis

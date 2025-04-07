@@ -43,7 +43,7 @@
   },
   "components": {
     "footer": {
-      "text": "Jérôme Commaret - Ce projet est sous licence "
+      "text": "Jérôme Commaret - Ce projet est sous licence MIT"
     }
   }
 } 

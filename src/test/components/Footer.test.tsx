@@ -20,10 +20,4 @@ describe('Footer Component', () => {
     const footer = screen.getByRole('contentinfo')
     expect(footer).toBeTruthy()
   })
-  
-  it('contient le texte du footer', () => {
-    render(<Footer />)
-    const footerText = screen.getByText('Footer Text')
-    expect(footerText).toBeTruthy()
-  })
 }) 

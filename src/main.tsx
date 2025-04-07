@@ -19,7 +19,7 @@ import "@fontsource/roboto/700.css"   // Bold
 import "@styles/index.scss"
 
 // Import components from the primary adapters in the hexagonal architecture
-import Root from "@/pages/Root"
+import Layout from "@/components/Layout"
 import Home from "@/pages/Home"
 import About from "@/pages/About"
 import ErrorPage from "@/pages/ErrorPage"
@@ -31,7 +31,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Router>
         <Routes>
           {/* Main route with outlet for nested routes */}
-          <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
+          <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
             {/* Index route (default child route) */}
             <Route index element={<Home />} />
             {/* About page route */}
