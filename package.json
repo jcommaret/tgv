@@ -10,8 +10,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "deploy": "npm run build && gh-pages -d dist",
-    "test": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test": "vitest --config vitest.config.mjs",
+    "test:coverage": "vitest run --coverage --config vitest.config.mjs"
   },
   "dependencies": {
     "react": "^18.2.0",

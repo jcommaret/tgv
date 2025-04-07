@@ -10,9 +10,10 @@ import content from "@data/content.json"
 
 function Home() {
   return (
-    <div className="container-custom py-10">
+    <div className="container-custom py-10" data-testid="home-container">
       <div className="flex flex-col items-center space-y-8">
-        <h1 className="text-light text-4xl font-bold">{content.pages.home.title}</h1>
+        <h1 className="text-4xl font-bold">{content.pages.home.title}</h1>
+        <p className="text-xl">{content.site.description}</p>
         <div className="rounded-lg overflow-hidden shadow-xl">
           <img 
             src={img.bannerBlack} 

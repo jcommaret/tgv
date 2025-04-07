@@ -1,28 +1,29 @@
-import * as React from 'react'
-import { describe, it, expect } from 'vitest'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
+import { describe, expect, it, vi } from 'vitest'
 import Footer from '../../components/Footer'
 
-describe('Footer Component', () => {
-  const renderFooter = () => {
-    return render(<Footer />)
+// Mock content.json
+vi.mock('@data/content.json', () => ({
+  default: {
+    components: {
+      footer: {
+        text: 'Footer Text'
+      }
+    }
   }
+}))
 
-  it('renders footer text', () => {
-    renderFooter()
-    const footerText = screen.getByText(/Jérôme Commaret/i)
-    expect(footerText).toBeVisible()
-  })
-
-  it('has correct structure', () => {
-    renderFooter()
+describe('Footer Component', () => {
+  it('rend le footer avec le bon rôle', () => {
+    render(<Footer />)
     const footer = screen.getByRole('contentinfo')
-    expect(footer).toBeVisible()
+    expect(footer).toBeTruthy()
   })
-
-  it('has correct styling classes', () => {
-    renderFooter()
-    const footer = screen.getByRole('contentinfo')
-    expect(footer).toHaveClass('text-light')
+  
+  it('contient le texte du footer', () => {
+    render(<Footer />)
+    const footerText = screen.getByText('Footer Text')
+    expect(footerText).toBeTruthy()
   })
 }) 

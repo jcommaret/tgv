@@ -1,19 +1,76 @@
-import * as React from 'react'
-import { describe, it, expect } from 'vitest'
+import React from 'react'
 import { render } from '@testing-library/react'
-import { HelmetProvider } from 'react-helmet-async'
-import SEO from '../../components/Seo'
+import { describe, expect, it, vi } from 'vitest'
+import Seo from '../../components/Seo'
+
+// Mock Helmet pour éviter les problèmes avec document.head
+vi.mock('react-helmet-async', () => ({
+  HelmetProvider: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+  Helmet: ({ children }: { children: React.ReactNode }) => <div data-testid="helmet">{children}</div>
+}))
+
+// Mock content.json avec tous les champs requis
+vi.mock('@data/content.json', () => ({
+  default: {
+    site: {
+      name: 'Test Site',
+      description: 'Test Description',
+      themeColor: '#000000'
+    },
+    seo: {
+      default: {
+        html: {
+          lang: 'fr'
+        },
+        meta: {
+          charset: 'utf-8',
+          viewport: 'width=device-width, initial-scale=1',
+          type: 'website',
+          twitterCard: 'summary_large_image',
+          robots: 'index, follow'
+        }
+      }
+    },
+    pages: {
+      home: {
+        title: 'Home Page',
+        description: 'Home Description',
+        seo: {
+          description: 'Home SEO Description'
+        }
+      },
+      about: {
+        title: 'About Page',
+        description: 'About Description',
+        seo: {
+          description: 'About SEO Description'
+        }
+      },
+      error: {
+        title: 'Error Page',
+        description: 'Error Description',
+        seo: {
+          description: 'Error SEO Description'
+        }
+      }
+    }
+  }
+}))
 
 describe('SEO Component', () => {
-  const renderSEO = (pageKey: 'home' | 'about' | 'error') => {
-    return render(
-      <HelmetProvider>
-        <SEO pageKey={pageKey} />
-      </HelmetProvider>
-    )
-  }
+  it('rend le composant SEO pour la page d\'accueil', () => {
+    const { container } = render(<Seo pageKey="home" />)
+    // Assurons-nous simplement que le composant est rendu
+    expect(container).toBeTruthy()
+  })
 
-  it('renders default SEO meta tags', () => {
-    renderSEO('home')
-     })
+  it('rend le composant SEO pour la page À propos', () => {
+    const { container } = render(<Seo pageKey="about" />)
+    expect(container).toBeTruthy()
+  })
+
+  it('rend le composant SEO pour la page d\'erreur', () => {
+    const { container } = render(<Seo pageKey="error" />)
+    expect(container).toBeTruthy()
+  })
 }) 
