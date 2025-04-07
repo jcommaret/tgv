@@ -5,6 +5,11 @@ interface SEOProps {
   pageKey: keyof typeof content.pages
 }
 
+interface PageSEO {
+  description?: string
+  robots?: string
+}
+
 const SEO = ({ pageKey }: SEOProps) => {
   const page = content.pages[pageKey]
   const title = `${page.title} | ${content.site.name}`
@@ -23,14 +28,14 @@ const SEO = ({ pageKey }: SEOProps) => {
 
       {/* Page specific SEO */}
       <title>{title}</title>
-      {page.seo.description && (
+      {(page.seo as PageSEO).description && (
         <>
-          <meta name="description" content={page.seo.description} />
-          <meta property="og:description" content={page.seo.description} />
+          <meta name="description" content={(page.seo as PageSEO).description} />
+          <meta property="og:description" content={(page.seo as PageSEO).description} />
         </>
       )}
       <meta property="og:title" content={title} />
-      {page.seo.robots && <meta name="robots" content={page.seo.robots} />}
+      {(page.seo as PageSEO).robots && <meta name="robots" content={(page.seo as PageSEO).robots} />}
     </Helmet>
   )
 }
