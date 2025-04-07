@@ -13,7 +13,8 @@
         "charset": "utf-8",
         "viewport": "width=device-width, initial-scale=1",
         "type": "website",
-        "twitterCard": "summary_large_image"
+        "twitterCard": "summary_large_image",
+        "robots": "index, follow"
       }
     }
   },
@@ -36,7 +37,7 @@
       "title": "Page non trouvée",
       "path": "*",
       "seo": {
-        "robots": "noindex, nofollow"
+        "description": "Page non trouvée"
       }
     }
   },

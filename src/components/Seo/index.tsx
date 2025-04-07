@@ -24,6 +24,7 @@ const SEO = ({ pageKey }: SEOProps) => {
       <meta property="og:site_name" content={content.site.name} />
       <meta property="og:type" content={content.seo.default.meta.type} />
       <meta name="twitter:card" content={content.seo.default.meta.twitterCard} />
+      <meta name="robots" content={content.seo.default.meta.robots} />
       <link rel="icon" href="/favicon.ico" />
 
       {/* Page specific SEO */}

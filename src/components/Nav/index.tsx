@@ -6,42 +6,31 @@
  * As a primary adapter in the hexagonal architecture, it presents domain data to the user.
  */
 
-import { Link } from "react-router-dom"
-import { img } from "@/assets/alias"
-import content from "@data/content.json"
+import { Link } from 'react-router-dom'
+import content from '@data/content.json'
 
-function Nav(): JSX.Element {
+function Nav() {
   return (
-    <header className="fixed top-0 w-full bg-dark shadow-md z-50">
-      <nav className="container-custom flex justify-between items-center h-16 px-4">
-        {/* Logo with link to home page */}
-        <h1 className="text-light">
-          <Link to={content.pages.home.path} className="flex items-center">
-            <img 
-              src={img.logo} 
-              alt="logo" 
-              className="h-12 w-auto"
-            />
+    <nav className="bg-white shadow-md" role="navigation">
+      <div className="container-custom py-4">
+        <div className="flex items-center justify-between">
+          <Link to="/" className="flex items-center">
+            <img src="/logo.svg" alt="Logo" className="h-8" />
           </Link>
-        </h1>
-        
-        {/* Navigation links dynamically generated from the configuration */}
-        <ul className="flex space-x-6">
-          {Object.values(content.pages)
-            .filter(page => page.path !== '*')
-            .map(page => (
-              <li key={page.path}>
-                <Link 
-                  to={page.path}
-                  className="text-light"
-                >
-                  {page.title}
-                </Link>
-              </li>
-            ))}
-        </ul>
-      </nav>
-    </header>
+          <ul className="flex space-x-6" role="list">
+            {Object.entries(content.pages)
+              .filter(([key]) => key !== 'error')
+              .map(([key, page]) => (
+                <li key={key}>
+                  <Link to={page.path} className="text-gray-700 hover:text-gray-900">
+                    {page.title}
+                  </Link>
+                </li>
+              ))}
+          </ul>
+        </div>
+      </div>
+    </nav>
   )
 }
 
