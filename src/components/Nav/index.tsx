@@ -2,13 +2,13 @@
  * Navigation Component
  * 
  * This component renders the main navigation header for the application.
- * It uses data from the centralized alias file to build navigation links.
+ * It uses data from the centralized configuration file to build navigation links.
  * As a primary adapter in the hexagonal architecture, it presents domain data to the user.
  */
 
 import { Link } from "react-router-dom"
-import { navData, img } from "@infrastructure/config/alias"
-import { NavLink } from "@domain/model/NavTypes"
+import { img } from "@/assets/alias"
+import content from "@data/content.json"
 
 function Nav(): JSX.Element {
   return (
@@ -16,7 +16,7 @@ function Nav(): JSX.Element {
       <nav className="container-custom flex justify-between items-center h-16 px-4">
         {/* Logo with link to home page */}
         <h1 className="text-light">
-          <Link to={navData.links[0].path} className="flex items-center">
+          <Link to={content.pages.home.path} className="flex items-center">
             <img 
               src={img.logo} 
               alt="logo" 
@@ -25,18 +25,20 @@ function Nav(): JSX.Element {
           </Link>
         </h1>
         
-        {/* Navigation links dynamically generated from the navigation data */}
+        {/* Navigation links dynamically generated from the configuration */}
         <ul className="flex space-x-6">
-          {navData.links.map((link: NavLink) => (
-            <li key={link.text}>
-              <Link 
-                to={link.path}
-                className="text-light "
-              >
-                {link.text}
-              </Link>
-            </li>
-          ))}
+          {Object.values(content.pages)
+            .filter(page => page.path !== '*')
+            .map(page => (
+              <li key={page.path}>
+                <Link 
+                  to={page.path}
+                  className="text-light"
+                >
+                  {page.title}
+                </Link>
+              </li>
+            ))}
         </ul>
       </nav>
     </header>

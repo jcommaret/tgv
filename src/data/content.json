@@ -1,0 +1,48 @@
+{
+  "site": {
+    "name": "TGV",
+    "description": "Déployez gratuitement vos sites sur Github pages",
+    "themeColor": "#000000"
+  },
+  "seo": {
+    "default": {
+      "html": {
+        "lang": "fr"
+      },
+      "meta": {
+        "charset": "utf-8",
+        "viewport": "width=device-width, initial-scale=1",
+        "type": "website",
+        "twitterCard": "summary_large_image"
+      }
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Accueil",
+      "path": "/",
+      "seo": {
+        "description": "Page d'accueil de TGV : deployement gratuit sur Github Pages"
+      }
+    },
+    "about": {
+      "title": "À propos",
+      "path": "about",
+      "seo": {
+        "description": "Page à propos de TGV"
+      }
+    },
+    "error": {
+      "title": "Page non trouvée",
+      "path": "*",
+      "seo": {
+        "robots": "noindex, nofollow"
+      }
+    }
+  },
+  "components": {
+    "footer": {
+      "text": "Jérôme Commaret - Ce projet est sous licence "
+    }
+  }
+} 

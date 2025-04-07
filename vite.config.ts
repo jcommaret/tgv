@@ -14,7 +14,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
  */
 export default defineConfig({
   plugins: [react()],
-  base: "/tgv/", // Base path for deployment
+  base: '/',
   resolve: {
     alias: {
       // Path aliases for cleaner imports
@@ -25,6 +25,7 @@ export default defineConfig({
       "@infrastructure": path.resolve(__dirname, "./src/infrastructure"), // Adapters and configuration
       "@assets": path.resolve(__dirname, "./src/assets"),          // Images and static assets
       "@styles": path.resolve(__dirname, "./src/styles"),          // Global styles
+      "@data": path.resolve(__dirname, "./src/data"),             // Data and configurations
     },
   },
 })

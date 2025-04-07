@@ -6,13 +6,20 @@
  * It uses React Router's Outlet to render child routes within this layout.
  */
 
-import { Outlet } from 'react-router-dom';
-import Nav from '@infrastructure/adapters/primary/components/Nav';
-import Footer from '@infrastructure/adapters/primary/components/Footer';
+import { Outlet, useLocation } from 'react-router-dom';
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
+import SEO from '@/components/Seo';
+import content from '@data/content.json';
 
 function Root() {
+  const location = useLocation();
+  const currentPath = location.pathname.replace('/', '') || 'home';
+  const pageKey = currentPath as keyof typeof content.pages;
+
   return (
     <div className="flex flex-col min-h-screen bg-dark font-roboto">
+      <SEO pageKey={pageKey} />
       {/* Navigation header */}
       <Nav />
 

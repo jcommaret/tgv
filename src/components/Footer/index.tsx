@@ -5,6 +5,7 @@
  * The current year is dynamically calculated on each render.
  */
 
+import content from "@data/content.json"
 // Component
 function Footer() {
   // Get the current year for the copyright notice
@@ -15,7 +16,7 @@ function Footer() {
       <div className="container-custom">
         <div className="flex flex-col items-center text-center">
           <p className="text-sm">
-            © {currentYear} - Jérôme Commaret - Ce projet est sous licence{" "}
+            © {currentYear} - {content.components.footer.text}
             <a
               href="https://opensource.org/licenses/MIT"
               target="_blank"

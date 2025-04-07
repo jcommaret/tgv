@@ -2,39 +2,38 @@
 
 ## Table of Contents
 
-- [Hexagonal Architecture](#hexagonal-architecture)
-- [Prerequisites](#prerequisites)
-- [Features](#features)
-- [To Do](#to-do)
+- [Architecture](#architecture)
+- [Prérequis](#prérequis)
+- [Fonctionnalités](#fonctionnalités)
+- [À faire](#à-faire)
 - [Installation](#installation)
-- [Development](#development)
-- [Deployment](#deployment)
-- [Folder Structure](#folder-structure)
-- [Using Aliases](#using-aliases)
-- [Examples](#examples)
-- [Screenshots](#screenshots)
-- [Additional Resources](#additional-resources)
+- [Développement](#développement)
+- [Déploiement](#déploiement)
+- [Structure des dossiers](#structure-des-dossiers)
+- [Utilisation des alias](#utilisation-des-alias)
+- [Exemples](#exemples)
+- [Captures d'écran](#captures-décran)
+- [Ressources supplémentaires](#ressources-supplémentaires)
 
-## Hexagonal Architecture
+## Architecture
 
-This project is organized according to the principles of hexagonal architecture (also known as "ports and adapters"):
+Ce projet est organisé selon une architecture modulaire :
 
-- **Domain**: Contains the domain models and ports (interfaces)
-- **Application**: Contains services and use cases
-- **Infrastructure**: Contains adapters (primary and secondary) and configuration
+- **Infrastructure** : Contient les adaptateurs et la configuration
+  - **Primary** : Composants React et pages
+  - **Secondary** : Configuration et données
 
-This architecture  several advantages:
-- Clear separation of concerns
-- Independence of business domain from technical details
-- Improved testability
-- Flexibility and ease of maintenance
+Cette architecture offre plusieurs avantages :
+- Séparation claire des responsabilités
+- Facilité de maintenance
+- Flexibilité et évolutivité
 
-## Prerequisites
+## Prérequis
 
-- A good understanding of [GitHub Pages](https://docs.github.com/en/pages)
-- Basic knowledge of hexagonal architecture
+- Une bonne compréhension de [GitHub Pages](https://docs.github.com/fr/pages)
+- Connaissances de base en React et TypeScript
 
-## Features
+## Fonctionnalités
 
 - [x] [Vite.js](https://vitejs.dev/)
 - [x] [React](https://react.dev/)
@@ -42,54 +41,44 @@ This architecture  several advantages:
 - [x] [SCSS](https://sass-lang.com/)
 - [x] [React-router](https://reactrouter.com/)
 - [x] [Tailwind CSS](https://tailwindcss.com/)
-- [x] Hexagonal Architecture
-- [x] Dependency Inversion
-- [x] Path aliases for better code readability
+- [x] Architecture modulaire
+- [x] Alias de chemins pour une meilleure lisibilité du code
 - [x] Navigation
-- [x] JSON files for routes, navigation, content
+- [x] Fichiers JSON pour le contenu et la configuration
 
-## To Do
+## À faire
 
-- [ ] Improve responsive assets
-- [ ] Add more components
-- [ ] Complete unit tests for each layer
+- [ ] Améliorer les assets responsifs
+- [ ] Ajouter plus de composants
+- [ ] Compléter les tests unitaires
 
 ## Installation
 
-1. Clone the repository
-2. Open a terminal in the project folder
-3. Run `npm install` to install dependencies
+1. Cloner le dépôt
+2. Ouvrir un terminal dans le dossier du projet
+3. Exécuter `npm install` pour installer les dépendances
 
-## Development
+## Développement
 
-- Run `npm run dev` to start the development server
+- Exécuter `npm run dev` pour démarrer le serveur de développement
 
-## Deployment
+## Déploiement
 
-1. In `package.json`, change the homepage path to your repository name
-2. Open a terminal in the project folder
-3. Run `npm run deploy` to deploy the project on GitHub Pages
+1. Dans `package.json`, modifier le chemin homepage avec le nom de votre dépôt
+2. Ouvrir un terminal dans le dossier du projet
+3. Exécuter `npm run deploy` pour déployer le projet sur GitHub Pages
 
-## Folder Structure
+## Structure des dossiers
 
 - 404.html
 - src
-  - **domain** (Business core)
-    - model (Domain entities and types)
-    - ports (Interfaces for repositories)
-  - **application** (Use cases)
-    - services (Business services)
-  - **infrastructure** (Technical details)
-    - adapters
-      - primary (Inbound adapters - UI)
-        - components (React components)
-        - pages (React pages)
-      - secondary (Outbound adapters - Data)
-    - config (Technical configuration)
+ 
+  - components (Composants React)
+  - pages (Pages React)
   - assets
     - images.tsx
   - data
-    - nav.json
+    - content.json
   - styles
     - utils
       - \_breakpoints.scss
@@ -98,14 +87,72 @@ This architecture  several advantages:
       - \_mixins.scss
   - main.tsx
 
-## Using Aliases
+## Utilisation des alias
 
-This project uses import aliases to make the code more readable:
+Ce projet utilise des alias d'import pour rendre le code plus lisible :
 
 ```typescript
-// Instead of
-import { NavData } from '../../domain/model/NavTypes';
+// Au lieu de
+import { Component } from '../../infrastructure/adapters/primary/components/Component';
 
-// You can write
-import { NavData } from '@domain/model/NavTypes';
+// Vous pouvez écrire
+import { Component } from '@infrastructure/adapters/primary/components/Component';
 ```
+
+## Exemples
+
+### Navigation
+
+La navigation est gérée via le fichier `content.json` :
+
+```json
+{
+  "pages": {
+    "home": {
+      "title": "Accueil",
+      "path": "/",
+      "seo": {
+        "description": "Page d'accueil de TGV"
+      }
+    },
+    "about": {
+      "title": "À propos",
+      "path": "about",
+      "seo": {
+        "description": "Page à propos de TGV"
+      }
+    }
+  }
+}
+```
+
+### SEO
+
+Le SEO est géré de manière centralisée dans le composant `Root` :
+
+```typescript
+function Root() {
+  const location = useLocation();
+  const currentPath = location.pathname.replace('/', '') || 'home';
+  const pageKey = currentPath as keyof typeof content.pages;
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      <SEO pageKey={pageKey} />
+      {/* ... */}
+    </div>
+  )
+}
+```
+
+## Captures d'écran
+
+*À ajouter*
+
+## Ressources supplémentaires
+
+- [Vite.js Documentation](https://vitejs.dev/guide/)
+- [React Documentation](https://react.dev/learn)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [GitHub Pages Documentation](https://docs.github.com/fr/pages)
