@@ -12,16 +12,17 @@
 - [Structure des dossiers](#structure-des-dossiers)
 - [Utilisation des alias](#utilisation-des-alias)
 - [Exemples](#exemples)
-- [Captures d'écran](#captures-décran)
 - [Ressources supplémentaires](#ressources-supplémentaires)
 
 ## Architecture
 
-Ce projet est organisé selon une architecture modulaire :
+Ce projet est organisé selon une architecture modulaire et simple :
 
-- **Infrastructure** : Contient les adaptateurs et la configuration
-  - **Primary** : Composants React et pages
-  - **Secondary** : Configuration et données
+- **Pages** : Composants React représentant les différentes pages de l'application
+- **Components** : Composants React réutilisables
+- **Data** : Données de configuration et de contenu
+- **Assets** : Ressources statiques (images, etc.)
+- **Styles** : Styles globaux et utilitaires
 
 Cette architecture offre plusieurs avantages :
 - Séparation claire des responsabilités
@@ -42,8 +43,8 @@ Cette architecture offre plusieurs avantages :
 - [x] [React-router](https://reactrouter.com/)
 - [x] [Tailwind CSS](https://tailwindcss.com/)
 - [x] Architecture modulaire
-- [x] Alias de chemins pour une meilleure lisibilité du code
 - [x] Navigation
+- [x] Gestion du SEO
 - [x] Fichiers JSON pour le contenu et la configuration
 
 ## À faire
@@ -51,6 +52,8 @@ Cette architecture offre plusieurs avantages :
 - [ ] Améliorer les assets responsifs
 - [ ] Ajouter plus de composants
 - [ ] Compléter les tests unitaires
+- [ ] Ajouter des animations
+- [ ] Améliorer l'accessibilité
 
 ## Installation
 
@@ -61,6 +64,8 @@ Cette architecture offre plusieurs avantages :
 ## Développement
 
 - Exécuter `npm run dev` pour démarrer le serveur de développement
+- Exécuter `npm run build` pour construire l'application
+- Exécuter `npm run preview` pour prévisualiser la version de production
 
 ## Déploiement
 
@@ -70,22 +75,26 @@ Cette architecture offre plusieurs avantages :
 
 ## Structure des dossiers
 
-- 404.html
-- src
- 
-  - components (Composants React)
-  - pages (Pages React)
-  - assets
-    - images.tsx
-  - data
-    - content.json
-  - styles
-    - utils
-      - \_breakpoints.scss
-      - \_colors.scss
-      - \_fonts.scss
-      - \_mixins.scss
-  - main.tsx
+```
+src/
+├── assets/           # Ressources statiques
+│   └── images.tsx    # Gestion des images
+├── components/       # Composants React réutilisables
+│   ├── Nav/         # Navigation
+│   ├── Footer/      # Pied de page
+│   └── Seo/         # Gestion du SEO
+├── pages/           # Pages de l'application
+│   ├── Home/        # Page d'accueil
+│   ├── About/       # Page À propos
+│   └── ErrorPage/   # Page d'erreur
+├── data/            # Données et configuration
+│   └── content.json # Contenu de l'application
+├── styles/          # Styles globaux
+│   ├── index.scss   # Point d'entrée des styles
+│   └── tailwind.css # Configuration Tailwind
+├── test/            # Tests unitaires
+└── main.tsx         # Point d'entrée de l'application
+```
 
 ## Utilisation des alias
 
@@ -93,10 +102,10 @@ Ce projet utilise des alias d'import pour rendre le code plus lisible :
 
 ```typescript
 // Au lieu de
-import { Component } from '../../infrastructure/adapters/primary/components/Component';
+import { Component } from '../../components/Component';
 
 // Vous pouvez écrire
-import { Component } from '@infrastructure/adapters/primary/components/Component';
+import { Component } from '@components/Component';
 ```
 
 ## Exemples
@@ -144,10 +153,6 @@ function Root() {
   )
 }
 ```
-
-## Captures d'écran
-
-*À ajouter*
 
 ## Ressources supplémentaires
 
