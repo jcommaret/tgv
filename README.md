@@ -1,163 +1,78 @@
-# TGV
+# Documentation du Projet TGV
 
-## Table of Contents
+## Table des Matières
+1. [Introduction](#introduction)
+2. [Installation](#installation)
+3. [Structure du Projet](#structure-du-projet)
+4. [Configuration](#configuration)
+5. [Scripts](#scripts)
+6. [Contribution](#contribution)
+7. [Licence](#licence)
 
-- [Architecture](#architecture)
-- [Prérequis](#prérequis)
-- [Fonctionnalités](#fonctionnalités)
-- [À faire](#à-faire)
-- [Installation](#installation)
-- [Développement](#développement)
-- [Déploiement](#déploiement)
-- [Structure des dossiers](#structure-des-dossiers)
-- [Utilisation des alias](#utilisation-des-alias)
-- [Exemples](#exemples)
-- [Ressources supplémentaires](#ressources-supplémentaires)
-
-## Architecture
-
-Ce projet est organisé selon une architecture modulaire et simple :
-
-- **Pages** : Composants React représentant les différentes pages de l'application
-- **Components** : Composants React réutilisables
-- **Data** : Données de configuration et de contenu
-- **Assets** : Ressources statiques (images, etc.)
-- **Styles** : Styles globaux et utilitaires
-
-Cette architecture offre plusieurs avantages :
-- Séparation claire des responsabilités
-- Facilité de maintenance
-- Flexibilité et évolutivité
-
-## Prérequis
-
-- Une bonne compréhension de [GitHub Pages](https://docs.github.com/fr/pages)
-- Connaissances de base en React et TypeScript
-
-## Fonctionnalités
-
-- [x] [Vite.js](https://vitejs.dev/)
-- [x] [React](https://react.dev/)
-- [x] [TypeScript](https://www.typescriptlang.org/)
-- [x] [SCSS](https://sass-lang.com/)
-- [x] [React-router](https://reactrouter.com/)
-- [x] [Tailwind CSS](https://tailwindcss.com/)
-- [x] Architecture modulaire
-- [x] Navigation
-- [x] Gestion du SEO
-- [x] Fichiers JSON pour le contenu et la configuration
-
-## À faire
-
-- [ ] Améliorer les assets responsifs
-- [ ] Ajouter plus de composants
-- [ ] Compléter les tests unitaires
-- [ ] Ajouter des animations
-- [ ] Améliorer l'accessibilité
+## Introduction
+Ce projet est une application web développée avec [Vite](https://vitejs.dev/) et [React](https://reactjs.org/). Il utilise [Tailwind CSS](https://tailwindcss.com/) pour le style et [TypeScript](https://www.typescriptlang.org/) pour le typage.
 
 ## Installation
-
-1. Cloner le dépôt
-2. Ouvrir un terminal dans le dossier du projet
-3. Exécuter `npm install` pour installer les dépendances
-
-## Développement
-
-- Exécuter `npm run dev` pour démarrer le serveur de développement
-- Exécuter `npm run build` pour construire l'application
-- Exécuter `npm run preview` pour prévisualiser la version de production
-
-## Déploiement
-
-1. Dans `package.json`, modifier le chemin homepage avec le nom de votre dépôt
-2. Ouvrir un terminal dans le dossier du projet
-3. Exécuter `npm run deploy` pour déployer le projet sur GitHub Pages
-
-## Structure des dossiers
-
-```
-src/
-├── assets/           # Ressources statiques
-│   └── images.tsx    # Gestion des images
-├── components/       # Composants React réutilisables
-│   ├── Nav/         # Navigation
-│   ├── Footer/      # Pied de page
-│   └── Seo/         # Gestion du SEO
-├── pages/           # Pages de l'application
-│   ├── Home/        # Page d'accueil
-│   ├── About/       # Page À propos
-│   └── ErrorPage/   # Page d'erreur
-├── data/            # Données et configuration
-│   └── content.json # Contenu de l'application
-├── styles/          # Styles globaux
-│   ├── index.scss   # Point d'entrée des styles
-│   └── tailwind.css # Configuration Tailwind
-├── test/            # Tests unitaires
-└── main.tsx         # Point d'entrée de l'application
+Pour installer les dépendances du projet, exécutez la commande suivante :
+```bash
+npm install
 ```
 
-## Utilisation des alias
-
-Ce projet utilise des alias d'import pour rendre le code plus lisible :
-
-```typescript
-// Au lieu de
-import { Component } from '../../components/Component';
-
-// Vous pouvez écrire
-import { Component } from '@components/Component';
+## Structure du Projet
+Voici une vue d'ensemble de la structure du projet :
+```
+/Users/jcommaret/Sites/tgv
+├── .git/
+├── .gitignore
+├── .prettierrc
+├── 404.html
+├── LICENSE
+├── README.md
+├── dist/
+├── eslint.config.js
+├── index.html
+├── node_modules/
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── public/
+├── src/
+├── tailwind.config.js
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── tsconfig.test.json
+├── vite.config.ts
+└── vitest.config.mjs
 ```
 
-## Exemples
+## Configuration
+### ESLint
+Le fichier `eslint.config.js` contient la configuration pour ESLint.
 
-### Navigation
+### Prettier
+Le fichier `.prettierrc` contient la configuration pour Prettier.
 
-La navigation est gérée via le fichier `content.json` :
+### Tailwind CSS
+Le fichier `tailwind.config.js` contient la configuration pour Tailwind CSS.
 
-```json
-{
-  "pages": {
-    "home": {
-      "title": "Accueil",
-      "path": "/",
-      "seo": {
-        "description": "Page d'accueil de TGV"
-      }
-    },
-    "about": {
-      "title": "À propos",
-      "path": "about",
-      "seo": {
-        "description": "Page à propos de TGV"
-      }
-    }
-  }
-}
-```
+### TypeScript
+Les fichiers `tsconfig.json`, `tsconfig.app.json`, `tsconfig.node.json`, et `tsconfig.test.json` contiennent les configurations pour TypeScript.
 
-### SEO
+## Scripts
+Les scripts disponibles dans le fichier `package.json` sont :
+- `dev`: Démarre le serveur de développement.
+- `build`: Construit l'application pour la production.
+- `lint`: Exécute ESLint pour vérifier le code.
+- `test`: Exécute les tests avec Vitest.
 
-Le SEO est géré de manière centralisée dans le composant `Root` :
+## Contribution
+Les contributions sont les bienvenues ! Veuillez suivre les étapes suivantes pour contribuer :
+1. Forkez le projet.
+2. Créez une nouvelle branche (`git checkout -b feature/ma-nouvelle-fonctionnalité`).
+3. Commitez vos modifications (`git commit -am 'Ajout de ma nouvelle fonctionnalité'`).
+4. Poussez vers la branche (`git push origin feature/ma-nouvelle-fonctionnalité`).
+5. Ouvrez une Pull Request.
 
-```typescript
-function Root() {
-  const location = useLocation();
-  const currentPath = location.pathname.replace('/', '') || 'home';
-  const pageKey = currentPath as keyof typeof content.pages;
-
-  return (
-    <div className="flex flex-col min-h-screen">
-      <SEO pageKey={pageKey} />
-      {/* ... */}
-    </div>
-  )
-}
-```
-
-## Ressources supplémentaires
-
-- [Vite.js Documentation](https://vitejs.dev/guide/)
-- [React Documentation](https://react.dev/learn)
-- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [GitHub Pages Documentation](https://docs.github.com/fr/pages)
+## Licence
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
