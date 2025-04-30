@@ -26,9 +26,9 @@
         "description": "Page d'accueil de TGV : deployement gratuit sur Github Pages"
       }
     },
-    "about": {
-      "title": "À propos",
-      "path": "about",
+    "documentation": {
+      "title": "Documentation",
+      "path": "documentation",
       "seo": {
         "description": "Page à propos de TGV"
       }

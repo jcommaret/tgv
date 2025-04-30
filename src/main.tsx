@@ -16,7 +16,7 @@ import "@styles/index.scss"
 // Import components from the primary adapters in the hexagonal architecture
 import Layout from "@/components/Layout"
 import Home from "@/pages/Home"
-import About from "@/pages/About"
+import Documentation from "@/pages/Documentation"
 import ErrorPage from "@/pages/ErrorPage"
 
 // Create the root React element and render the application
@@ -30,7 +30,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             {/* Index route (default child route) */}
             <Route index element={<Home />} />
             {/* About page route */}
-            <Route path="about" element={<About />} />
+            <Route path="documentation" element={<Documentation />} />
             {/* Catch all route for 404 */}
             <Route path="*" element={<ErrorPage />} />
           </Route>
