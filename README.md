@@ -10,7 +10,7 @@
 7. [Licence](#licence)
 
 ## Introduction
-Ce projet est une application web développée avec [Vite](https://vitejs.dev/) et [React](https://reactjs.org/). Il utilise [Tailwind CSS](https://tailwindcss.com/) pour le style et [TypeScript](https://www.typescriptlang.org/) pour le typage.
+Ce projet est un micro framework pour le développement de sites web développée avec [Vite](https://vitejs.dev/) et [React](https://reactjs.org/). Il utilise [Tailwind CSS](https://tailwindcss.com/) pour le style et [TypeScript](https://www.typescriptlang.org/) pour le typage.
 
 ## Installation
 Pour installer les dépendances du projet, exécutez la commande suivante :

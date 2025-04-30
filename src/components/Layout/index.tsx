@@ -18,7 +18,7 @@ function Layout() {
   const pageKey = currentPath as keyof typeof content.pages;
 
   return (
-    <div className="flex flex-col min-h-screen bg-dark font-roboto">
+    <div className="flex flex-col min-h-screen bg-dark">
       <SEO pageKey={pageKey} />
       {/* Navigation header */}
       <Nav />
