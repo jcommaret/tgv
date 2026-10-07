@@ -1,21 +1,386 @@
-@import "./tailwind.css";
+// ============================================
+// TGV Design System - Styles Globaux
+// ============================================
+
+// Import des variables SCSS (utilise @import pour compatibilité)
+@import './variables';
+
+// Import Tailwind CSS
+@import './tailwind.css';
+
+// ============================================
+// Fonts
+// ============================================
 
 @font-face {
-    font-family: 'Roboto Variable';
-    font-style: normal;
-    font-display: auto;
-    font-weight: 400 700;
-    src: url(@fontsource-variable/roboto/files/roboto-latin-wght-normal.woff2) format('woff2-variations');
-    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(@fontsource/roboto/files/roboto-latin-400-normal.woff2) format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(@fontsource/roboto/files/roboto-latin-700-normal.woff2) format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+// ============================================
+// Theme tokens (RGB channels, consumed by tailwind.config.js)
+// Every text color keeps a WCAG AA contrast (≥ 4.5:1) on every surface.
+// ============================================
+
+:root {
+  color-scheme: light;
+  --color-surface: 255 255 255;
+  --color-surface-raised: 243 244 246;
+  --color-surface-sunken: 249 250 251;
+  --color-fg: 17 24 39;
+  --color-fg-muted: 55 65 81;
+  --color-fg-subtle: 75 85 99;
+  --color-line: 229 231 235;
+  --color-accent: 29 78 216;
+}
+
+:root.dark {
+  color-scheme: dark;
+  --color-surface: 10 10 10;
+  --color-surface-raised: 31 41 55;
+  --color-surface-sunken: 17 24 39;
+  --color-fg: 243 244 246;
+  --color-fg-muted: 209 213 219;
+  --color-fg-subtle: 156 163 175;
+  --color-line: 55 65 81;
+  --color-accent: 96 165 250;
+}
+
+// ============================================
+// Base Styles
+// ============================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-    font-family: "Roboto", sans-serif;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: rgb(var(--color-fg));
+  background-color: rgb(var(--color-surface));
+  min-height: 100vh;
+}
+
+// ============================================
+// Typography
+// ============================================
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: inherit;
+}
+
+h1 {
+  font-size: $font-size-4xl;
+}
+h2 {
+  font-size: $font-size-3xl;
+}
+h3 {
+  font-size: $font-size-2xl;
+}
+h4 {
+  font-size: $font-size-xl;
+}
+h5 {
+  font-size: $font-size-lg;
+}
+h6 {
+  font-size: $font-size-base;
+}
+
+p {
+  margin-bottom: $spacing-4;
+}
+
+a {
+  color: rgb(var(--color-accent));
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary-500;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+// Links inside running text must not rely on color alone (WCAG 1.4.1)
+p a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 code {
-    background-color: #333;
-    border-radius: 3px;
-    font-family: courier, monospace;
-    padding: 0 3px;
+  font-family: $font-family-mono;
+  font-size: 0.875em;
+  background-color: $gray-100;
+  padding: 0.125rem 0.375rem;
+  border-radius: $radius-base;
+
+  .dark & {
+    background-color: $gray-800;
   }
+}
+
+pre {
+  font-family: $font-family-mono;
+  background-color: $gray-900;
+  color: $gray-100;
+  padding: $spacing-4;
+  border-radius: $radius-lg;
+  overflow-x: auto;
+  margin-bottom: $spacing-4;
+
+  code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+}
+
+// ============================================
+// Utility Classes
+// ============================================
+
+.sr-only {
+  @include sr-only;
+}
+
+.container-custom {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-4;
+  padding-right: $spacing-4;
+
+  @include sm {
+    max-width: $breakpoint-sm;
+  }
+  @include md {
+    max-width: $breakpoint-md;
+  }
+  @include lg {
+    max-width: $breakpoint-lg;
+  }
+  @include xl {
+    max-width: $breakpoint-xl;
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, $primary-500 0%, $secondary-500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  @include glass;
+}
+
+.glass-dark {
+  @include glass-dark;
+}
+
+// ============================================
+// Animations
+// ============================================
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn $transition-slow ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp $transition-slow ease-out;
+}
+
+.animate-slide-down {
+  animation: slideDown $transition-slow ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn $transition-base ease-out;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, $gray-200 25%, $gray-100 50%, $gray-200 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: $radius-base;
+
+  .dark & {
+    background: linear-gradient(90deg, $gray-800 25%, $gray-700 50%, $gray-800 75%);
+    background-size: 200% 100%;
+  }
+}
+
+// ============================================
+// Focus Styles
+// ============================================
+
+:focus-visible {
+  outline: 2px solid $primary-500;
+  outline-offset: 2px;
+}
+
+// Remove default focus for mouse users
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// ============================================
+// Selection
+// ============================================
+
+::selection {
+  background-color: $primary-200;
+  color: $primary-900;
+
+  .dark & {
+    background-color: $primary-800;
+    color: $primary-100;
+  }
+}
+
+// ============================================
+// Scrollbar
+// ============================================
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $gray-100;
+  border-radius: $radius-full;
+
+  .dark & {
+    background: $gray-800;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  background: $gray-300;
+  border-radius: $radius-full;
+
+  &:hover {
+    background: $gray-400;
+  }
+
+  .dark & {
+    background: $gray-600;
+
+    &:hover {
+      background: $gray-500;
+    }
+  }
+}
+
+// ============================================
+// Reduced Motion
+// ============================================
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

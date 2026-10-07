@@ -1,0 +1,54 @@
+{
+  "name": "TGV - Micro Framework React",
+  "short_name": "TGV",
+  "description": "Un micro framework moderne pour le développement de sites web",
+  "start_url": "/tgv/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "scope": "/tgv/",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["developer", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/tgv/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/tgv/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/tgv/banner-black.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Accueil",
+      "short_name": "Accueil",
+      "description": "Retour à la page d'accueil",
+      "url": "/tgv/",
+      "icons": [{ "src": "/tgv/logo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Documentation",
+      "short_name": "Docs",
+      "description": "Voir la documentation",
+      "url": "/tgv/#/documentation",
+      "icons": [{ "src": "/tgv/logo.png", "sizes": "192x192" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

@@ -5,7 +5,7 @@
  */
 
 // Import data and assets
-import images from "@assets/images";
+import images from '@assets/images'
 
 // Export image assets
-export const img = images; 
+export const img = images

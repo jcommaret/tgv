@@ -1,8 +1,7 @@
 {
   "site": {
     "name": "TGV",
-    "description": "Déployez gratuitement vos sites sur Github pages",
-    "themeColor": "#000000"
+    "description": "Déployez gratuitement vos sites sur Github pages"
   },
   "seo": {
     "default": {
@@ -28,7 +27,7 @@
     },
     "documentation": {
       "title": "Documentation",
-      "path": "documentation",
+      "path": "/documentation",
       "seo": {
         "description": "Page à propos de TGV"
       }
@@ -46,4 +45,4 @@
       "text": "Jérôme Commaret - Ce projet est sous licence MIT"
     }
   }
-} 
+}

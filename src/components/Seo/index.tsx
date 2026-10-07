@@ -20,12 +20,11 @@ const SEO = ({ pageKey }: SEOProps) => {
       <html lang={content.seo.default.html.lang} />
       <meta charSet={content.seo.default.meta.charset} />
       <meta name="viewport" content={content.seo.default.meta.viewport} />
-      <meta name="theme-color" content={content.site.themeColor} />
       <meta property="og:site_name" content={content.site.name} />
       <meta property="og:type" content={content.seo.default.meta.type} />
       <meta name="twitter:card" content={content.seo.default.meta.twitterCard} />
       <meta name="robots" content={content.seo.default.meta.robots} />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}logo.png`} />
 
       {/* Page specific SEO */}
       <title>{title}</title>
@@ -36,9 +35,11 @@ const SEO = ({ pageKey }: SEOProps) => {
         </>
       )}
       <meta property="og:title" content={title} />
-      {(page.seo as PageSEO).robots && <meta name="robots" content={(page.seo as PageSEO).robots} />}
+      {(page.seo as PageSEO).robots && (
+        <meta name="robots" content={(page.seo as PageSEO).robots} />
+      )}
     </Helmet>
   )
 }
 
-export default SEO 
+export default SEO

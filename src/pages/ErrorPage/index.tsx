@@ -1,4 +1,4 @@
-import content from "@data/content.json"
+import content from '@data/content.json'
 
 function ErrorPage() {
   return (
@@ -11,4 +11,4 @@ function ErrorPage() {
   )
 }
 
-export default ErrorPage 
+export default ErrorPage
