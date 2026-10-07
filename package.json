@@ -5,43 +5,80 @@
   "type": "module",
   "homepage": "https://jcommaret.github.io/tgv",
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "build": "tsc -b && vite build",
+    "build:analyze": "tsc -b && vite build --mode analyze",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --fix",
     "preview": "vite preview",
     "deploy": "npm run build && gh-pages -d dist",
     "test": "vitest --config vitest.config.mjs",
-    "test:coverage": "vitest run --coverage --config vitest.config.mjs"
+    "test:ui": "vitest --ui --config vitest.config.mjs",
+    "test:coverage": "vitest run --coverage --config vitest.config.mjs",
+    "test:coverage:ui": "vitest run --coverage --ui --config vitest.config.mjs",
+    "prepare": "husky",
+    "type-check": "tsc -b",
+    "validate": "npm run lint && npm run type-check && npm run test:coverage",
+    "analyze": "npm run build:analyze",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,scss,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css,scss,json,md}\""
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,scss,json,md,yml,yaml}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@fontsource/roboto": "^5.3.0",
+    "framer-motion": "^14.0.0",
+    "immer": "^11.1.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.5",
-    "react-router-dom": "^7.18.3"
+    "react-router-dom": "^7.18.3",
+    "zustand": "^5.0.15"
   },
   "devDependencies": {
+    "@axe-core/react": "^4.13.0",
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "@eslint/js": "^9.39.5",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
-    "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.1",
+    "@types/node": "^24.19.1",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
     "@typescript-eslint/eslint-plugin": "^8.29.1",
     "@typescript-eslint/parser": "^8.29.1",
     "@vitejs/plugin-react": "^6.1.1",
+    "@vitest/coverage-v8": "^5.0.3",
+    "@vitest/ui": "^5.0.3",
     "autoprefixer": "^10.4.17",
+    "esbuild": "^0.28.2",
     "eslint": "^9.24.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "gh-pages": "^6.1.1",
+    "globals": "^17.13.0",
+    "husky": "^9.1.7",
     "jsdom": "^26.0.0",
+    "lint-staged": "^17.6.0",
     "postcss": "^8.4.35",
+    "prettier": "^3.3.3",
+    "rollup-plugin-visualizer": "^7.1.1",
     "sass": "^1.71.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.2.2",
+    "typescript-eslint": "^8.71.1",
     "vite": "^8.3.0",
     "vitest": "^5.0.0"
   },
