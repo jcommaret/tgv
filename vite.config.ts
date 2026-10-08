@@ -30,7 +30,7 @@ export default defineConfig(({ mode }) => {
       isAnalyze &&
         visualizer({
           filename: './dist/stats.html',
-          open: true,
+          open: !process.env.CI,
           gzipSize: true,
           brotliSize: true,
           template: 'treemap', // 'sunburst', 'treemap', 'network'
