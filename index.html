@@ -1,15 +1,128 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
   <head>
+    <!-- Charset & Viewport -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/tgv/assets/logo-Bwdwp4o0.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>T.G.V</title>
-    <script type="module" crossorigin src="/tgv/assets/index-DAhXBbvd.js"></script>
-    <link rel="stylesheet" crossorigin href="/tgv/assets/index-DhCHbI5y.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- SEO -->
+    <title>TGV - Micro Framework React</title>
+    <meta
+      name="description"
+      content="Un micro framework moderne pour le développement de sites web, construit avec Vite, React, TypeScript et Tailwind CSS."
+    />
+    <meta
+      name="keywords"
+      content="react, vite, typescript, tailwind, framework, micro-framework, web"
+    />
+    <meta name="author" content="jcommaret" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Apply the saved theme before first paint to avoid a light/dark flash -->
+    <script>
+      ;(function () {
+        try {
+          var saved = JSON.parse(localStorage.getItem('tgv-app-store') || 'null')
+          var theme =
+            saved && saved.state && saved.state.preferences && saved.state.preferences.theme
+          var dark =
+            theme === 'dark' ||
+            (theme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          document.documentElement.classList.toggle('dark', dark)
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute('content', dark ? '#0a0a0a' : '#ffffff')
+        } catch (e) {}
+      })()
+    </script>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://jcommaret.github.io/tgv/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jcommaret.github.io/tgv/" />
+    <meta property="og:title" content="TGV - Micro Framework React" />
+    <meta
+      property="og:description"
+      content="Un micro framework moderne pour le développement de sites web"
+    />
+    <meta property="og:image" content="https://jcommaret.github.io/tgv/banner-black.png" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="TGV" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://jcommaret.github.io/tgv/" />
+    <meta name="twitter:title" content="TGV - Micro Framework React" />
+    <meta
+      name="twitter:description"
+      content="Un micro framework moderne pour le développement de sites web"
+    />
+    <meta name="twitter:image" content="https://jcommaret.github.io/tgv/banner-black.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/tgv/logo.png" />
+    <link rel="apple-touch-icon" href="/tgv/logo.png" />
+    <link rel="manifest" href="/tgv/manifest.json" />
+
+    <!-- Prevent FOUC (Flash of Unstyled Content) -->
+    <style>html{visibility:visible;opacity:1}#root:empty{background-color:#fff;justify-content:center;align-items:center;min-height:100vh;display:flex}#root:empty:before{content:"";border:3px solid #3b82f6;border-top-color:#0000;border-radius:50%;width:48px;height:48px;animation:1s linear infinite spin}@keyframes spin{to{transform:rotate(360deg)}}html.dark #root:empty{background-color:#0a0a0a}</style>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "TGV",
+        "description": "Un micro framework moderne pour le développement de sites web",
+        "url": "https://jcommaret.github.io/tgv/",
+        "author": {
+          "@type": "Person",
+          "name": "jcommaret"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "jcommaret"
+        }
+      }
+    </script>
+    <script type="module" crossorigin src="/tgv/assets/js/index-CWXHXntd.js"></script>
+    <link rel="modulepreload" crossorigin href="/tgv/assets/js/rolldown-runtime-CbXtAM7H.js">
+    <link rel="modulepreload" crossorigin href="/tgv/assets/js/vendor-ywWtmMiF.js">
+    <link rel="modulepreload" crossorigin href="/tgv/assets/js/vendor-motion-DkxREvk1.js">
+    <link rel="modulepreload" crossorigin href="/tgv/assets/js/vendor-react-Wq8J2hg8.js">
+    <link rel="modulepreload" crossorigin href="/tgv/assets/js/vendor-state-DxAm6Uwn.js">
+    <link rel="stylesheet" crossorigin href="/tgv/assets/index-ClypfV8G.css">
   </head>
 
-  <body>
+  <body class="antialiased">
+    <!-- Application root -->
     <div id="root"></div>
+
+    <!-- No JavaScript fallback -->
+    <noscript>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          padding: 2rem;
+          text-align: center;
+          font-family: system-ui, sans-serif;
+        "
+      >
+        <h1 style="font-size: 1.5rem; margin-bottom: 1rem">JavaScript requis</h1>
+        <p style="color: #666">
+          Cette application nécessite JavaScript pour fonctionner. Veuillez l'activer dans votre
+          navigateur.
+        </p>
+      </div>
+    </noscript>
+
+    <!-- Main application script -->
   </body>
 </html>

@@ -1,0 +1,46 @@
+import{r as e}from"./vendor-motion-DkxREvk1.js";import{n as t}from"./index-CWXHXntd.js";var n=e();function r({children:e}){return(0,n.jsx)(`pre`,{className:`text-sm`,children:(0,n.jsx)(`code`,{children:e.trim()})})}var i=[{id:`demarrage`,title:`Démarrage rapide`,body:(0,n.jsxs)(n.Fragment,{children:[(0,n.jsxs)(`p`,{children:[`TGV nécessite `,(0,n.jsx)(`strong`,{children:`Node.js 24`}),` ou plus (version indiquée dans`,` `,(0,n.jsx)(`code`,{children:`.nvmrc`}),`).`]}),(0,n.jsx)(r,{children:`
+git clone https://github.com/jcommaret/tgv.git
+cd tgv
+nvm use
+npm install
+cp .env.example .env
+npm run dev
+`}),(0,n.jsxs)(`p`,{children:[`Le site est alors disponible sur `,(0,n.jsx)(`code`,{children:`http://localhost:3000/tgv/`}),`.`]})]})},{id:`scripts`,title:`Scripts`,body:(0,n.jsx)(`div`,{className:`overflow-x-auto`,children:(0,n.jsxs)(`table`,{className:`w-full text-left text-sm`,children:[(0,n.jsx)(`thead`,{children:(0,n.jsxs)(`tr`,{className:`border-b border-line`,children:[(0,n.jsx)(`th`,{scope:`col`,className:`py-2 pr-4 font-semibold`,children:`Commande`}),(0,n.jsx)(`th`,{scope:`col`,className:`py-2 font-semibold`,children:`Rôle`})]})}),(0,n.jsx)(`tbody`,{children:[[`npm run dev`,`Serveur de développement avec rechargement à chaud`],[`npm run build`,`Vérification TypeScript puis build de production dans dist/`],[`npm run preview`,`Sert le build de production en local`],[`npm test`,`Tests en mode watch`],[`npm run test:coverage`,`Tests avec rapport de couverture (seuil : 70 %)`],[`npm run lint`,`ESLint, zéro avertissement toléré`],[`npm run type-check`,`Vérification TypeScript de tout le projet`],[`npm run format`,`Formate src/ avec Prettier`],[`npm run validate`,`Lint + types + tests : à lancer avant de pousser`],[`npm run deploy`,`Build puis publication sur GitHub Pages`]].map(([e,t])=>(0,n.jsxs)(`tr`,{className:`border-b border-line`,children:[(0,n.jsx)(`td`,{className:`py-2 pr-4 whitespace-nowrap`,children:(0,n.jsx)(`code`,{children:e})}),(0,n.jsx)(`td`,{className:`py-2 text-fg-muted`,children:t})]},e))})]})})},{id:`structure`,title:`Structure du projet`,body:(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(r,{children:`
+src/
+├── assets/        Images importées par le code
+├── components/    Layout, Nav, Footer, Seo
+├── data/          content.json : textes, pages et SEO
+├── hooks/         useDarkMode, useMediaQuery…
+├── pages/         Une page par dossier (Home, Documentation, ErrorPage)
+├── shared/        Composants réutilisables (ErrorBoundary, Toast, Loader…)
+├── store/         État global (Zustand)
+├── styles/        SCSS global et couleurs du thème
+└── test/          Tests, mocks et configuration Vitest
+public/            Fichiers copiés tels quels (logo, manifest)
+`}),(0,n.jsxs)(`p`,{children:[`Des alias évitent les chemins relatifs : `,(0,n.jsx)(`code`,{children:`@components`}),`, `,(0,n.jsx)(`code`,{children:`@pages`}),`,`,` `,(0,n.jsx)(`code`,{children:`@hooks`}),`, `,(0,n.jsx)(`code`,{children:`@store`}),`, `,(0,n.jsx)(`code`,{children:`@data`}),`, `,(0,n.jsx)(`code`,{children:`@shared`}),`,`,` `,(0,n.jsx)(`code`,{children:`@assets`}),`, `,(0,n.jsx)(`code`,{children:`@styles`}),` et `,(0,n.jsx)(`code`,{children:`@`}),` pour `,(0,n.jsx)(`code`,{children:`src/`}),`.`]})]})},{id:`ajouter-une-page`,title:`Ajouter une page`,body:(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(`p`,{children:`1. Créez le composant de la page :`}),(0,n.jsx)(r,{children:`
+// src/pages/Contact/index.tsx
+function Contact() {
+  return <h1 className="text-fg text-4xl font-bold">Contact</h1>
+}
+
+export default Contact
+`}),(0,n.jsxs)(`p`,{children:[`2. Déclarez-la dans `,(0,n.jsx)(`code`,{children:`src/data/content.json`}),`. Le menu et les balises SEO sont générés à partir de ce fichier :`]}),(0,n.jsx)(r,{children:`
+"contact": {
+  "title": "Contact",
+  "path": "/contact",
+  "seo": { "description": "Nous contacter" }
+}
+`}),(0,n.jsxs)(`p`,{children:[`3. Ajoutez la route dans `,(0,n.jsx)(`code`,{children:`src/main.tsx`}),` (la page est chargée à la demande) :`]}),(0,n.jsx)(r,{children:`
+const Contact = lazy(() => import('@/pages/Contact'))
+
+<Route path="contact" element={<Contact />} />
+`}),(0,n.jsxs)(`p`,{children:[`Le site utilise un routage par hash (`,(0,n.jsx)(`code`,{children:`/tgv/#/contact`}),`), ce qui fonctionne sur GitHub Pages sans configuration serveur. Toute URL inconnue affiche la page 404.`]})]})},{id:`theme`,title:`Mode clair et mode sombre`,body:(0,n.jsxs)(n.Fragment,{children:[(0,n.jsxs)(`p`,{children:[`Le thème suit la préférence du système, jusqu’à ce que l’utilisateur le change avec le bouton de la barre de navigation. Son choix est mémorisé. Pour qu’un composant s’adapte automatiquement aux deux modes, utilisez les couleurs sémantiques plutôt que des couleurs fixes comme `,(0,n.jsx)(`code`,{children:`text-white`}),` ou `,(0,n.jsx)(`code`,{children:`bg-gray-800`}),` :`]}),(0,n.jsx)(`ul`,{className:`grid gap-2 sm:grid-cols-2 list-none`,children:[[`bg-surface`,`Fond de page`],[`bg-surface-raised`,`Cartes, boutons secondaires`],[`bg-surface-sunken`,`Bandeaux, zones en retrait`],[`text-fg`,`Texte principal`],[`text-fg-muted`,`Texte secondaire`],[`text-fg-subtle`,`Texte discret (mentions, version)`],[`text-accent`,`Liens et éléments mis en avant`],[`border-line`,`Bordures et séparateurs`]].map(([e,t])=>(0,n.jsxs)(`li`,{className:`flex flex-col`,children:[(0,n.jsx)(`code`,{className:`self-start`,children:e}),(0,n.jsx)(`span`,{className:`text-sm text-fg-muted`,children:t})]},e))}),(0,n.jsxs)(`p`,{children:[`Leurs valeurs sont définies dans `,(0,n.jsx)(`code`,{children:`src/styles/index.scss`}),` (un jeu pour le clair, un pour le sombre) et respectent un contraste d’au moins 4,5:1 (WCAG AA).`]})]})},{id:`etat-global`,title:`État global et notifications`,body:(0,n.jsxs)(n.Fragment,{children:[(0,n.jsxs)(`p`,{children:[`L’état partagé (thème, chargement, notifications) vit dans`,` `,(0,n.jsx)(`code`,{children:`src/store/appStore.ts`}),`. Pour afficher une notification :`]}),(0,n.jsx)(r,{children:`
+import { useAddNotification } from '@store/appStore'
+
+const addNotification = useAddNotification()
+addNotification({ type: 'success', message: 'Enregistré !' })
+`}),(0,n.jsxs)(`p`,{children:[`Les types disponibles sont `,(0,n.jsx)(`code`,{children:`success`}),`, `,(0,n.jsx)(`code`,{children:`error`}),`, `,(0,n.jsx)(`code`,{children:`warning`}),` `,`et `,(0,n.jsx)(`code`,{children:`info`}),`. Les notifications disparaissent après 5 secondes (option`,` `,(0,n.jsx)(`code`,{children:`duration`}),`, `,(0,n.jsx)(`code`,{children:`0`}),` pour les garder).`]})]})},{id:`tests`,title:`Tests et qualité`,body:(0,n.jsxs)(n.Fragment,{children:[(0,n.jsxs)(`p`,{children:[`Les tests (Vitest + Testing Library) sont dans `,(0,n.jsx)(`code`,{children:`src/test/`}),`. Pour les composants animés, réutilisez le mock fourni :`]}),(0,n.jsx)(r,{children:`
+vi.mock('framer-motion', () => import('../mocks/framer-motion'))
+`}),(0,n.jsxs)(`p`,{children:[`À chaque commit, les fichiers modifiés sont lintés et formatés automatiquement, et le message doit suivre les`,` `,(0,n.jsx)(`a`,{href:`https://www.conventionalcommits.org/fr/`,target:`_blank`,rel:`noreferrer`,children:`Conventional Commits`}),` `,`(`,(0,n.jsx)(`code`,{children:`feat: …`}),`, `,(0,n.jsx)(`code`,{children:`fix: …`}),`). En développement, axe-core signale les problèmes d’accessibilité dans la console du navigateur.`]})]})},{id:`deploiement`,title:`Déploiement`,body:(0,n.jsxs)(n.Fragment,{children:[(0,n.jsxs)(`p`,{children:[`Chaque push sur `,(0,n.jsx)(`code`,{children:`master`}),` lance la CI GitHub Actions (lint, types, tests, build) puis publie `,(0,n.jsx)(`code`,{children:`dist/`}),` sur GitHub Pages. Pour publier à la main :`]}),(0,n.jsx)(r,{children:`
+npm run deploy
+`}),(0,n.jsxs)(`p`,{children:[`Le site est servi sous `,(0,n.jsx)(`code`,{children:`/tgv/`}),`. Pour un autre chemin, définissez`,` `,(0,n.jsx)(`code`,{children:`VITE_BASE_URL`}),` dans `,(0,n.jsx)(`code`,{children:`.env`}),`.`]})]})}],a=(e,t)=>{e.preventDefault(),document.getElementById(t)?.scrollIntoView({behavior:`smooth`,block:`start`})};function o(){return(0,n.jsxs)(`div`,{className:`max-w-6xl mx-auto px-4 py-12 lg:grid lg:grid-cols-[14rem_1fr] lg:gap-12`,children:[(0,n.jsx)(`nav`,{"aria-label":`Sommaire`,className:`mb-10 lg:mb-0`,children:(0,n.jsxs)(`div`,{className:`lg:sticky lg:top-24`,children:[(0,n.jsx)(`p`,{className:`text-sm font-semibold uppercase tracking-wide text-fg-subtle mb-3`,children:`Sommaire`}),(0,n.jsx)(`ul`,{className:`space-y-2 text-sm`,children:i.map(e=>(0,n.jsx)(`li`,{children:(0,n.jsx)(`a`,{href:`#${e.id}`,onClick:t=>a(t,e.id),className:`text-fg-muted hover:text-accent`,children:e.title})},e.id))})]})}),(0,n.jsxs)(`article`,{className:`min-w-0 text-fg`,children:[(0,n.jsx)(`h1`,{className:`text-4xl font-bold mb-4`,children:t.pages.documentation.title}),(0,n.jsx)(`p`,{className:`text-lg text-fg-muted mb-12`,children:`Tout ce qu’il faut pour créer, faire évoluer et publier un site avec TGV.`}),i.map(e=>(0,n.jsxs)(`section`,{id:e.id,"aria-labelledby":`${e.id}-title`,className:`mb-12 scroll-mt-24 space-y-4 leading-relaxed [&_p]:mb-0`,children:[(0,n.jsx)(`h2`,{id:`${e.id}-title`,className:`text-2xl font-bold`,children:e.title}),e.body]},e.id))]})]})}export{o as default};
