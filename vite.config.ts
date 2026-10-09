@@ -86,13 +86,13 @@ export default defineConfig(({ mode }) => {
         // Security headers
         'X-Frame-Options': 'DENY',
         'X-Content-Type-Options': 'nosniff',
-        'X-XSS-Protection': '1; mode=block',
         'Referrer-Policy': 'strict-origin-when-cross-origin',
         'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
         // Content Security Policy (adjust as needed)
         'Content-Security-Policy': [
           "default-src 'self'",
-          "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+          // 'unsafe-inline' is required by the theme anti-flash script in index.html
+          "script-src 'self' 'unsafe-inline'",
           "style-src 'self' 'unsafe-inline'",
           "font-src 'self'",
           "img-src 'self' data: https:",
@@ -114,33 +114,34 @@ export default defineConfig(({ mode }) => {
       minify: isProduction,
       // Chunk size warning limit (500kb)
       chunkSizeWarningLimit: 500,
-      // Rollup options for advanced optimization
-      rollupOptions: {
+      // Rolldown options (Vite 8 replaces the deprecated `rollupOptions`)
+      rolldownOptions: {
         output: {
-          // Manual chunk splitting for better caching
-          manualChunks: (id) => {
-            // Vendor chunks
-            if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
-                return 'vendor-react'
-              }
-              if (id.includes('framer-motion')) {
-                return 'vendor-motion'
-              }
-              if (id.includes('zustand')) {
-                return 'vendor-state'
-              }
-              if (id.includes('@fontsource')) {
-                return 'vendor-fonts'
-              }
-              // Other vendor libraries
-              return 'vendor'
-            }
-            // Feature chunks
-            if (id.includes('src/features/')) {
-              const match = id.match(/src\/features\/([^/]+)/)
-              if (match) return `feature-${match[1]}`
-            }
+          // Chunk splitting for better caching (replaces the deprecated `manualChunks`).
+          // Regexes match exact package paths: a plain `react` substring would also
+          // capture react-helmet-async, @axe-core/react, etc.
+          codeSplitting: {
+            groups: [
+              {
+                name: 'vendor-react',
+                test: /node_modules[\\/](react|react-dom|react-router|react-router-dom|scheduler)[\\/]/,
+                priority: 30,
+              },
+              {
+                name: 'vendor-motion',
+                test: /node_modules[\\/](framer-motion|motion-dom|motion-utils)[\\/]/,
+                priority: 20,
+              },
+              { name: 'vendor-state', test: /node_modules[\\/](zustand|immer)[\\/]/, priority: 20 },
+              { name: 'vendor-fonts', test: /node_modules[\\/]@fontsource[\\/]/, priority: 20 },
+              { name: 'vendor', test: /node_modules/, priority: 10 },
+              // One chunk per feature folder
+              {
+                name: (id) => `feature-${id.match(/src[\\/]features[\\/]([^\\/]+)/)?.[1]}`,
+                test: /src[\\/]features[\\/]/,
+                priority: 5,
+              },
+            ],
           },
           // Asset file naming
           assetFileNames: (assetInfo) => {
