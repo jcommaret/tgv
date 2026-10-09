@@ -159,7 +159,7 @@ import Nav from '../../../components/Nav'
 | `@assets`     | `src/assets/`     |
 | `@shared`     | `src/shared/`     |
 
-> `@features`, `@utils`, `@types` et `@app` sont aussi configurés, pour des
+> `@features`, `@utils`, `@app-types` et `@app` sont aussi configurés, pour des
 > dossiers à créer au besoin.
 
 ---
