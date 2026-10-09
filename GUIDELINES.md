@@ -410,8 +410,17 @@ avant tout commit. `lint`, `type-check`, les tests et le build ne détectent
 > doivent être visibles que dans `tsconfig.test.json`, sinon `describe`/`it`
 > passent le type-check dans le code applicatif.
 >
-> ⚠️ **Ne pas nommer un alias `@types/*`** : il entre en collision avec le scope
-> npm `@types/` (paquets de typings). Utiliser `@app-types/*`.
+> ⚠️ **Ne pas nommer un alias `@types/*`**, utiliser `@app-types/*`. `@types/`
+> est le scope npm des paquets de typings (`@types/react`, `@types/node`…). Ce
+> n'est pas un bug bloquant (TypeScript charge `node_modules/@types` via
+> `typeRoots`, pas via `paths`, et interdit d'importer `@types/xxx`
+> directement), mais l'alias est trompeur :
+>
+> - `from '@types/articles'` ressemble à un paquet npm nommé `articles` ;
+> - les outils de tri d'imports et certains résolveurs ESLint classent les
+>   imports `@scope/…` comme dépendances externes ;
+> - l'alias Vite `'@types'` capte tout chemin `@types/…` : un vrai `@types/…`
+>   résolu à l'exécution serait redirigé vers `src/types`.
 >
 > ℹ️ `baseUrl` n'est plus nécessaire avec `moduleResolution: "bundler"` : les
 > `paths` sont résolus relativement au tsconfig.
