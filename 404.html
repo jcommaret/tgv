@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirection</title>
+    <meta name="robots" content="noindex" />
+    <script>
+      // GitHub Pages sert ce fichier pour toute URL inconnue.
+      // L'application utilise HashRouter : on convertit le chemin en route hash
+      // (/tgv/documentation?x=1 → /tgv/#/documentation?x=1) pour que le routeur
+      // affiche la bonne page, ou la page 404 de l'application.
+      // pathSegmentsToKeep = 1 pour un site de projet (/<repo>/), 0 pour un domaine custom.
+      var pathSegmentsToKeep = 1
+      var l = window.location
+      var segments = l.pathname.split('/')
+      var base = segments.slice(0, 1 + pathSegmentsToKeep).join('/') + '/'
+      var route = segments.slice(1 + pathSegmentsToKeep).join('/')
+      l.replace(l.origin + base + '#/' + route + l.search)
+    </script>
+  </head>
+  <body>
+    Redirection…
+  </body>
+</html>

@@ -1,4 +1,4 @@
-import{r as e}from"./vendor-motion-DkxREvk1.js";import{n as t}from"./index-CWXHXntd.js";var n=e();function r({children:e}){return(0,n.jsx)(`pre`,{className:`text-sm`,children:(0,n.jsx)(`code`,{children:e.trim()})})}var i=[{id:`demarrage`,title:`Démarrage rapide`,body:(0,n.jsxs)(n.Fragment,{children:[(0,n.jsxs)(`p`,{children:[`TGV nécessite `,(0,n.jsx)(`strong`,{children:`Node.js 24`}),` ou plus (version indiquée dans`,` `,(0,n.jsx)(`code`,{children:`.nvmrc`}),`).`]}),(0,n.jsx)(r,{children:`
+import{t as e}from"./vendor-react-YOyd3rU2.js";import{n as t}from"./index-avDPCHKb.js";var n=e();function r({children:e}){return(0,n.jsx)(`pre`,{className:`text-sm`,children:(0,n.jsx)(`code`,{children:e.trim()})})}var i=[{id:`demarrage`,title:`Démarrage rapide`,body:(0,n.jsxs)(n.Fragment,{children:[(0,n.jsxs)(`p`,{children:[`TGV nécessite `,(0,n.jsx)(`strong`,{children:`Node.js 24`}),` ou plus (version indiquée dans`,` `,(0,n.jsx)(`code`,{children:`.nvmrc`}),`).`]}),(0,n.jsx)(r,{children:`
 git clone https://github.com/jcommaret/tgv.git
 cd tgv
 nvm use
